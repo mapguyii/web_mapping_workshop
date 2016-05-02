@@ -41,10 +41,10 @@ featureLayer.on('ready', function(){
 //    })
 //
 //})
+// info coming from index file	$= a selector
 
 var clickHandler = function(e){
-	// info coming from index file	$= a selector
-  	$('#info')empty();
+  
   var featuer = e.target.feature;
   
   $('#sidebar').fadeIn(400, function(){
