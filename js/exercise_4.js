@@ -42,6 +42,8 @@ featureLayer.on('ready', function(){
 //
 //})
 // info coming from index file	$= a selector
+// += is a way to ammend and ad something to it
+
 var clickHandler = function(e){
 	
   	$('#info')empty();
@@ -50,7 +52,7 @@ var clickHandler = function(e){
   $('#sidebar').fadeIn(400, function(){
   		var info = '';
     
-    	// += is a way to ammend and ad something to it
+    	
     	info += '<div>';
     	
     	info += '<h2>' + feature.properties.name + '</h2>'
