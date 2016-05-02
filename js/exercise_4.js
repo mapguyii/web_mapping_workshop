@@ -34,10 +34,46 @@ featureLayer.on('ready', function(){
     map.fitBounds(featureLayer.getBounds());
 })
 
+// Comment out to add sidebar versus popups
+//featureLayer.on('ready', function(){
+//	this.eachLayer(function(layer){
+//    	layer.bindPopup('Welcome to ' + layer.feature.properties.name)
+//    })
+//
+//})
+
+var clickHandler = function(e){
+	// info coming from index file	$= a selector
+  	$('#info')empty();
+  var featuer = e.target.feature;
+  
+  $('#sidebar').fadeIn(400, function(){
+  		var info = '';
+    
+    	// += is a way to ammend and ad something to it
+    	info += '<div>';
+    	
+    	info += '<h2>' + feature.properties.name + '</h2>'
+        if(feature.properties.cuisine){
+          info += '<p>' + feature.properties.cuisine + </p>;
+        }
+        if(feature.properties.phone){
+          info += '<p>' + feature.properties.phone + '</p>;
+        }
+    	if(feature.properties.website){
+          infor += '<p><a href="' + feature.properties.website +'">' + feature.properites.website + '</a></p>;
+        }
+    	info += '</div>';
+    
+    	$('#info').append(info);
+    
+  })
+  
+}
+
 featureLayer.on('ready', function(){
 	this.eachLayer(function(layer){
-    	layer.bindPopup('Welcome to ' + layer.feature.properties.name)
+    	layer.on('click', clickHandler);
     })
-
 })
 	
