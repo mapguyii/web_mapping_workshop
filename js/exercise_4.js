@@ -47,7 +47,7 @@ featureLayer.on('ready', function(){
 var clickHandler = function(e){
 	
   	$('#info')empty();
-  var featuer = e.target.feature;
+  var feature = e.target.feature;
   
   $('#sidebar').fadeIn(400, function(){
   		var info = '';
