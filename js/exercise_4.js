@@ -69,7 +69,7 @@ var clickHandler = function(e){
     
     var myGeoJSON = myLocation.getGeoJSON();
     
-    getDirections(myGeoJSON.geometry.coordinates, feature.geometry.coordinates)
+    getDirections(myGeoJSON.geometry.coordinates, feature.geometry.coordinates);
 }
 
 featureLayer.on('ready', function(){
@@ -86,13 +86,13 @@ var myLocation = L.mapbox.featureLayer().addTo(map);
 
 map.on('locationfound', function(e){
 	myLocation.setGeoJSON({
-    	type: 'Feature', 
+    	type: 'Feature',
       	geometry: {
         	type: 'Point',
           	coordinates: [ e.latlng.lng, e.latlng.lat ]
         },
       	properties: {
-         	"title": "Here I am!",
+        	"title": "Here I am!",
           	"marker-color": "#ff8888",
           	"marker-symbol": "star"
         }
@@ -112,6 +112,7 @@ function getDirections(frm, to){
       	costing: 'pedestrian',
       	directions_options:{
       		units: 'miles'
+        }
     })
     $.ajax({
     	url: 'https://valhalla.mapzen.com/route',
@@ -135,14 +136,16 @@ function getDirections(frm, to){
         })
         
         $('#directions').fadeIn(400, function(){
-        	var summary = data.trip.summary
-          	$('#summary').empty();
-          	$('#distance').text((Math.round(summary.length * 100)/ 100) + data.trip.units);
+          	var summary = data.trip.summary
+        	$('#summary').empty();
+          	$('#distance').text((Math.round(summary.length * 100) / 100) + ' ' + data.trip.units);
           	$('#time').text((Math.round(summary.time / 60 * 100) / 100) + ' min');
+          
+          
+          
         })
         
     })
 }
-
 
 
