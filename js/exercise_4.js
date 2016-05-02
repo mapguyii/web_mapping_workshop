@@ -45,36 +45,27 @@ featureLayer.on('ready', function(){
 // += is a way to ammend and ad something to it
 
 var clickHandler = function(e){
-	
-  	$('#info')empty();
-  var feature = e.target.feature;
+	$('#info').empty();
   
-  $('#sidebar').fadeIn(400, function(){
-  		var info = '';
-    
-    	
-    	info += '<div>';
-    	
-    	info += '<h2>' + feature.properties.name + '</h2>'
-        
+  	var feature = e.target.feature;
+  
+  	$('#sidebar').fadeIn(400, function(){
+    	var info = '';
+      
+      	info += '<div>';
+      	info += '<h2>' + feature.properties.name + '</h2>'
         if(feature.properties.cuisine){
-          info += '<p>' + feature.properties.cuisine + </p>;
+          info += '<p>' + feature.properties.cuisine + '</p>';
         }
-       
-    	if(feature.properties.phone){
-          info += '<p>' + feature.properties.phone + '</p>;
+        if(feature.properties.phone){
+          info += '<p>' + feature.properties.phone + '</p>';
         }
-    	
-    	if(feature.properties.website){
-          infor += '<p><a href="' + feature.properties.website +'">' + feature.properites.website + '</a></p>;
+      	if(feature.properties.website){
+          info += '<p><a href="' + feature.properties.website + '">' + feature.properties.website + '</a></p>';
         }
-    	
-    	info += '</div>';
-    
-    	$('#info').append(info);
-    
-  })
-  
+      	info += '</div>';
+      	$('#info').append(info);
+    })
 }
 
 featureLayer.on('ready', function(){
@@ -82,7 +73,11 @@ featureLayer.on('ready', function(){
     	layer.on('click', clickHandler);
     })
 })
-	
+
 map.on('click', function(){
 	$('#sidebar').fadeOut(200);
 })
+
+
+Status API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Contact Help
