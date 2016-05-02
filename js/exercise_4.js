@@ -101,7 +101,7 @@ map.on('locationfound', function(e){
 
 map.locate({setView: true})
 
-var routeline = L.mapbox.featureLayer().addTo(map);
+var routeLine = L.mapbox.featureLayer().addTo(map);
 
 function getDirections(frm, to){
 	var jsonPayload = JSON.stringify({
@@ -109,8 +109,8 @@ function getDirections(frm, to){
           {lat: frm[1], lon: frm[0]},
           {lat: to[1], lon: to[0]}
         ],
-      costing: 'pedestrian',
-      units: 'miles'
+      	costing: 'pedestrian',
+      	units: 'miles'
     })
     $.ajax({
     	url: 'https://valhalla.mapzen.com/route',
@@ -118,7 +118,7 @@ function getDirections(frm, to){
         	json: jsonPayload,
           	api_key: 'valhalla-gwtf3x2'
         }
-    }),done(function(data){
+    }).done(function(data){
     	var routeShape = polyline.decode(data.trip.legs[0].shape);
       	routeLine.setGeoJSON({
         	type: 'Feature',
@@ -126,7 +126,7 @@ function getDirections(frm, to){
             	type: 'LineString',
               	coordinates: routeShape
             },
-          	properites: {
+          	properties: {
             	"stroke": "#ed23f1",
               	"stroke-opacity": 0.8,
               	"stroke-width": 8
